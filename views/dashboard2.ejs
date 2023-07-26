@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    /> -->
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+      rel="stylesheet"
+    />
+    <link href="/dash/css/styles.css" rel="stylesheet" />
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+
+      #layoutSidenav{
+        margin-bottom: 5em;
+      }
+      #layoutSidenav #layoutSidenav_content{
+        min-height: max-content !important;
+      }
+      #layoutSidenav .nav-link {
+        border: 2px solid rgb(255, 196, 0);;
+        margin-bottom: 1em;
+        margin-left: 1em;
+      }
+
+      .user-info {
+        border: 2px solid rgb(255, 196, 0);
+        padding: 1em;
+      }
+
+      #layoutSidenav .icon {
+        width: 3.5em;
+        height: 3.5em;
+        border-radius: 50%;
+        background-color: rgb(255, 196, 0); !important;
+        color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #layoutSidenav p{
+        margin: 0 !important;
+      }
+
+      #layoutSidenav a {
+        color: #000 !important;
+        text-decoration: none;
+      }
+
+      .account-info-wrap .top{
+        padding: 2em 1em;
+      }
+
+      .account-info-wrap .bottom{
+        background-color: rgb(255, 196, 0);
+        width: 100%;
+        padding: 2em 1em;
+      }
+
+      .account-info-wrap .bottom a{
+        text-transform: uppercase;
+        color: #000;
+        font-weight: bold;
+        text-align: center;
+        border: 1px solid #000;
+        padding: .5em 1em;
+        display: block;
+      }
+
+      
+      .account-info-wrap p{
+        font-weight: bold;
+        text-transform: uppercase;
+        color: rgb(255, 196, 0) !important;
+      }
+
+      .account-info-wrap .amount{
+        font-size: 1.7em;
+      }
+
+      .last-wrap{
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .last-wrap p{
+        color: #000 !important;
+        font-weight: bold;
+      }
+
+      footer img{
+        width: 7em;
+        color: rgb(255, 196, 0);
+      }
+
+      footer{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 98vw;
+      }
+
+      .item img{
+        width: 2.2em;
+      }
+
+      @media screen and(max-width: 1024px){
+        .account-info-wrap div{
+          width: 100%;
+        }
+
+      }
+
+    </style>
+  </head>
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+      <!-- Navbar Brand-->
+      <a class="navbar-brand ps-3" href="index.html">Xchange Experts</a>
+      <!-- Sidebar Toggle-->
+      <button
+        class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+        id="sidebarToggle"
+        href="#!"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><i class="fas fa-user fa-fw"></i
+          ></a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+          >
+            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div id="layoutSidenav" class="mt-5">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion mt-5" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <div class="nav">
+              <a class="nav-link" href="/dashboard">
+                Dashboard
+              </a>
+              <a class="nav-link" href="/withdraw">
+                Withdraw
+              </a>
+              <a class="nav-link" href="/history">
+                History
+              </a>
+              <a class="nav-link" href="/settings">
+                Settings
+              </a>
+              <a class="nav-link" href="/logout">
+                Logout
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">
+        <main>
+          <div class="container-fluid px-4">
+            <!-- user info -->
+            <div class="row user-info">
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-3">
+                    <div class="icon">
+                      <i class="fas fa-2x text-white fa-user"></i>
+                    </div>
+                  </div>
+                  <div class="col-8">
+                    <p>USERNAME</p>
+                    <p><%=req.user.username %></h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-3">
+                    <div class="icon">
+                      <i class="fas fa-2x text-white fa-pen"></i>
+                    </div>
+                  </div>
+                  <div class="col-8">
+                    <p>REGISTRATION DATE</p>
+                    <p><%=req.user.username %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="row align-items-center">
+                  <div class="col-3">
+                    <div class="icon">
+                      <i class="fas fa-keys"></i>
+                    </div>
+                  </div>
+                  <div class="col-8">
+                    <p>LAST ACCESS</p>
+                    <p><%=req.user.username %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- account info -->
+            <div class="row account-info-wrap"
+            style="justify-content: space-around !important;"
+            >
+              <!-- item -->
+              <div class="col-md-5 item mt-5">
+                <div class="bg-dark row align-items-center">
+                  <div class="top col-2">
+                    <img src="/dash/img/icons8-bar-chart-64.png" alt="">
+                  </div>
+                  <div class="top col-9">
+                    <p class="text-white">Account Balance</p>
+                    <p class="text-white amount"><%= req.user.currency %> <%= req.user.balance %></p>
+                  </div>
+                  <div class="bottom">
+                    <a href="/withdraw">Request Payment</a>
+                  </div>
+                </div>
+              </div>
+              <!-- item -->
+              <div class="col-md-5 item mt-5">
+                <div class="bg-dark row align-items-center">
+                  <div class="top col-3">
+                    <img src="/dash/img/icons8-wallet-64.png" alt="">
+                  </div>
+                  <div class="top col-9">
+                    <p class="text-white">Earned Total</p>
+                    <p class="text-white amount"><%= req.user.currency %> <%= req.user.balance %></p>
+                  </div>
+                  <div class="bottom">
+                    <a href="/withdraw">Make Deposit</a>
+                  </div>
+                </div>
+              </div>
+              <!-- item -->
+              <div class="col-md-5 item mt-5">
+                <div class="bg-dark row align-items-center">
+                  <div class="top col-2">
+                    <img src="/dash/img/icons8-time-is-money-64.png" alt="">
+                  </div>
+                  <div class="top col-9">
+                    <p class="text-white">Active Deposits</p>
+                    <p class="text-white amount"><%= req.user.currency %> <%= req.user.balance %></p>
+                  </div>
+                  <div class="bottom last-wrapper">
+                    <div class="last-wrap">
+                      <p>Last Deposit</p>
+                      <p><%= req.user.currency%><%= req.user.last_deposit %></p>
+                    </div>
+                    <hr>
+                    <div class="last-wrap">
+                      <p>Total Deposit</p>
+                      <p><%= req.user.currency%><%= req.user.total_deposit %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- item -->
+              <div class="col-md-5 item mt-5">
+                <div class="bg-dark row align-items-center">
+                  <div class="top col-2">
+                    <img src="/dash/img/icons8-receive-money-66.png" alt="">
+                  </div>
+                  <div class="top col-9">
+                    <p class="text-white">Total Withdrawal</p>
+                    <p class="text-white amount"><%= req.user.currency %> <%= req.user.balance %></p>
+                  </div>
+                  <div class="bottom">
+                    <div class="last-wrap">
+                      <p>Last Withdrawal</p>
+                      <p><%= req.user.currency%><%= req.user.total_withdraw %></p>
+                    </div>
+                    <hr>
+                    <div class="last-wrap">
+                      <p>Total Withdrawal</p>
+                      <p><%= req.user.currency%><%= req.user.last_withdraw %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </main>
+      </div>
+    </div>
+    <br>
+    <footer class="py-1 bg-dark mt-auto">
+      <img src="/assets/img/pslogo/btc.png" alt="">
+      <img src="/assets/img/pslogo/doge.png" alt="">
+      <img src="/assets/img/pslogo/eth.png" alt="">
+      <img src="/assets/img/pslogo/ltc.png" alt="">
+      <img src="/assets/img/pslogo/pmusd.png" alt="">
+      <img src="/assets/img/pslogo/pyusd.png" alt="">
+    </footer>
+
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/dash/js/scripts.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/dash/assets/demo/chart-area-demo.js"></script>
+    <script src="/dash/assets/demo/chart-bar-demo.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/dash/js/datatables-simple-demo.js"></script>
+  </body>
+</html>
