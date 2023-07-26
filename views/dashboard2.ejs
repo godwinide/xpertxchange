@@ -207,7 +207,7 @@
                   </div>
                   <div class="col-8">
                     <p>REGISTRATION DATE</p>
-                    <p><%=req.user.username %></p>
+                    <p><%=new Date(req.user.regDate).toDateString() %></p>
                   </div>
                 </div>
               </div>
@@ -220,7 +220,7 @@
                   </div>
                   <div class="col-8">
                     <p>LAST ACCESS</p>
-                    <p><%=req.user.username %></p>
+                    <p><%= new Date().toDateString() %></p>
                   </div>
                 </div>
               </div>
